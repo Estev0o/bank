@@ -7,6 +7,15 @@ camposDoFormulario.forEach((campo) => {
     campo.addEventListener("invalid", evento => evento.preventDefault());
 })
 
+const tiposDeErro = [
+    'valueMissing', // campo vazio
+    'typeMismatch', // o tipo  do elemento nao combina com o dado inserido EX: e-mail
+    'patternMismatch', // se o dado nao seguir um determinado padrao nao vai aceitar
+    'tooShort', // dado inserido curto, confirme o padrao solicitado
+    'customError' // customizavel
+]
+
+
 function verificaCampo(campo) {
     if (campo.name == "cpf" && campo.value.length >= 11) {
         ehumCPF(campo);

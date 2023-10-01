@@ -4,6 +4,7 @@ const video = document.querySelector("[data-video]");
 const botaoTirar = document.querySelector("[data-tirar-foto]");
 const canvas = document.querySelector("[data-video-canvas]");
 const mensagem = document.querySelector("[data-mensagem]");
+const enviar = document.querySelector("[data-enviar]");
 
 let imagemURL = "";
 
@@ -24,4 +25,15 @@ botaoTirar.addEventListener("click", function(){
 
     campoCamera.style.display = "none";
     mensagem.style.display = "block";
+})
+
+enviar.addEventListener("click", () => {
+    const receberDadosExistentes = localStorage.getItem("cadastro");
+    const converteRetorno = JSON.parse(receberDadosExistentes);
+
+    converteRetorno.imagem = imagemURL;
+
+    localStorage.setItem('cadastro',JSON.stringify(converteRetorno));
+
+    window.location.href = "./abrir-conta-form-3.html";
 })
